@@ -5,6 +5,7 @@ import {
   propertyItems,
   pageItems,
   profilItems,
+  agendaItems,
   dataItems,
   pengaduanItems,
 } from "@/data/navItems";
@@ -55,6 +56,11 @@ const MainMenu = () => {
         setTopMenu("profil");
       }
     });
+    agendaItems.forEach((elm) => {
+      if (elm.href.split("/")[1] == pathname.split("/")[1]) {
+        setTopMenu("agenda");
+      }
+    });
     dataItems.forEach((elm) => {
       if (elm.href.split("/")[1] == pathname.split("/")[1]) {
         setTopMenu("data");
@@ -88,7 +94,7 @@ const MainMenu = () => {
           <span
             className={topMenu == "profil" ? "title menuActive" : "title"}
           >
-            Profil
+            Dasar Hukum
           </span>
           <span className="arrow"></span>
         </a>
@@ -103,6 +109,15 @@ const MainMenu = () => {
         </ul>
       </li>
       {/* End profil Items */}
+
+      <li className="visible_list dropitem">
+        <a className="list-item" href="/agenda">
+          <span className={topMenu == "agenda" ? "title menuActive" : "title"}>
+            Agenda
+          </span>
+        </a>
+      </li>
+      {/* End agenda Items */}
 
       <li className="visible_list dropitem">
         <a className="list-item" href="#">

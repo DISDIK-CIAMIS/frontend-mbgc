@@ -115,8 +115,12 @@ export const pageItems = [
 ];
 
 export const profilItems = [
-  { href: "/dasar-hukum", label: "Dasar Hukum" },
+  { href: "/surat-edaran-kemendagri", label: "Surat Edaran Kemendagri" },
   { href: "/sk-pembentukan", label: "SK Pembentukan" },
+];
+
+export const agendaItems = [
+  { href: "/agenda", label: "Agenda" },
 ];
 
 export const dataItems = [
