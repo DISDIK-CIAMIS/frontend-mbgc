@@ -15,12 +15,30 @@ import Image from "next/image";
 import Blog from "@/components/common/Blog";
 import Link from "next/link";
 import PopulerProperty from "@/components/home/home-v1/PopulerProperty";
+import DataUmum from "@/components/home/home-v1/DataUmum";
 
 export const metadata = {
   title: "Beranda || MBGC - Satgas Percepatan MBG Kabupaten Ciamis",
 };
 
-const Home_V1 = () => {
+const Home_V1 = async () => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/data-counts`, {
+    cache: "no-store",
+  });
+
+  const counts = await res.json();
+
+  const types = [
+    {
+      id: 1,
+      icon: "flaticon-home", // adjust icon classes to your template
+      title: "Jumlah SPPG",
+      count: counts.totalSppg ?? 0,
+    },
+    // tambahkan item lain nanti kalau perlu
+  ];
+
+
   return (
     <>
       {/* Main Header Nav */}
@@ -118,7 +136,7 @@ const Home_V1 = () => {
                 data-aos-delay="100"
                 data-aos-duration="300"
               >
-                <ApartmentType />
+                <DataUmum types={types} />
               </div>
             </div>
           </div>
