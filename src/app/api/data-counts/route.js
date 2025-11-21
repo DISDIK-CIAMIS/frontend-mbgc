@@ -1,28 +1,43 @@
+import { NextResponse } from "next/server";
+
 export async function GET() {
-  const [sppgRes, guruRes] = await Promise.all([
-    fetch(`${process.env.BACKEND_URL}/api/sppg`, {
+  try {
+    if (!process.env.BACKEND_URL || !process.env.LARAVEL_API_KEY) {
+      throw new Error("BACKEND_URL or LARAVEL_API_KEY is not set");
+    }
+
+    const sppgRes = await fetch(`${process.env.BACKEND_URL}/api/sppg`, {
       headers: {
         "X-API-KEY": process.env.LARAVEL_API_KEY,
-        "Accept": "application/json",
+        Accept: "application/json", // 🔁 turn this back on
       },
-    }),
-    // fetch(`${process.env.BACKEND_URL}/api/guru`, {
-    //   headers: {
-    //     "X-API-KEY": process.env.LARAVEL_API_KEY,
-    //     Accept: "application/json",
-    //   },
-    // }),
-    // add more backend calls as needed
-  ]);
+      // cache: "no-store", // optional, if you always want fresh
+    });
 
-  const [sppg] = await Promise.all([
-    sppgRes.json(),
-    // guruRes.json(),
-  ]);
+    if (!sppgRes.ok) {
+      const errorText = await sppgRes.text();
+      console.error("SPPG API error:", sppgRes.status, errorText);
+      return NextResponse.json(
+        { error: "Failed to fetch sppg", status: sppgRes.status },
+        { status: 500 }
+      );
+    }
 
-  return Response.json({
-    totalSppg: 30,
-    // totalGuru: guru.length,
-    // add more here later
-  });
+    const sppgData = await sppgRes.json();
+
+    // Handle either plain array or `{ data: [...] }`
+    const totalSppg = Array.isArray(sppgData)
+      ? sppgData.length
+      : Array.isArray(sppgData.data)
+      ? sppgData.data.length
+      : 0;
+
+    return NextResponse.json({ totalSppg });
+  } catch (err) {
+    console.error("Route /api/... GET error:", err);
+    return NextResponse.json(
+      { error: "Internal server error", details: String(err) },
+      { status: 500 }
+    );
+  }
 }
