@@ -1,9 +1,11 @@
+import dynamic from "next/dynamic";
 import DefaultHeader from "@/components/common/DefaultHeader";
 import MobileMenu from "@/components/common/mobile-menu";
 import Footer from "@/components/property/dashboard/Footer";
 import data from "@/data/daftar-sppg.json";
 import TopStateBlock from "@/components/data/daftar-sppg/TopStateBlock";
 import ClientOnlyTable from "@/components/tables/ClientOnlyTable";
+import MapWrapper from "@/components/maps/MapWrapper";
 
 export const metadata = {
   title: "Daftar SPPG || MBGC - Satgas Percepatan MBG Kabupaten Ciamis",
@@ -28,17 +30,26 @@ export default async function DashboardHomePage() {
                 </div>
               </div>
 
+              <div className="row mb30">
+                <div className="col-lg-12">
+                  <div className="p30 bgc-white bdrs12">
+                    <h4 className="title mb20">Sebaran SPPG Kabupaten Ciamis</h4>
+                    <MapWrapper data={data} />
+                  </div>
+                </div>
+              </div>
+
               <div className="row">
                 <TopStateBlock />
               </div>
 
-              {/* <div className="row">
+              <div className="row">
                 <div className="col-lg-12">
                   <div className="datatable-wrapper">
                     <ClientOnlyTable data={data} />
                   </div>
                 </div>
-              </div> */}
+              </div>
             </div>
             <Footer />
           </div>
