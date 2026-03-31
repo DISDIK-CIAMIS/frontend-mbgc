@@ -17,6 +17,8 @@
     "datatables.net-dt": "^2.3.4",
     "datatables.net-react": "^1.0.1",
     "eslint": "9.27.0",
+    "leaflet": "^1.9.4",
+    "leaflet-defaulticon-compatibility": "^0.1.2",
     "next": "15.1.8",
     "photoswipe": "^5.4.4",
     "prop-types": "15.8.1",
@@ -25,6 +27,7 @@
     "react-countup": "^6.5.3",
     "react-dom": "19.1.0",
     "react-intersection-observer": "^9.16.0",
+    "react-leaflet": "^5.0.0",
     "react-photoswipe-gallery": "^3.1.1",
     "react-pro-sidebar": "^1.1.0",
     "react-select": "^5.10.1",
@@ -33,5 +36,8 @@
     "sass": "^1.89.0",
     "styled-components": "^6.1.19",
     "swiper": "^11.2.8"
+  },
+  "devDependencies": {
+    "@types/leaflet": "^1.9.21"
   }
 }

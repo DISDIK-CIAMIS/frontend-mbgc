@@ -22,20 +22,58 @@ export const metadata = {
 };
 
 const Home_V1 = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/data-counts`, {
-    cache: "no-store",
-  });
+  let apiData = [];
 
-  const counts = await res.json();
+  try {
+    const res = await fetch(`${process.env.BACKEND_URL}/api/sppg`, {
+      headers: {
+        "X-API-KEY": process.env.LARAVEL_API_KEY,
+        "Accept": "application/json",
+      },
+      cache: "no-store",
+    });
+    
+    if (res.ok) {
+      const json = await res.json();
+      apiData = json.data || [];
+    } else {
+      console.error("SPPG API error:", res.status, await res.text());
+    }
+  } catch (error) {
+    console.error("Failed to fetch SPPG data:", error);
+  }
+
+  const totalSppg = apiData.length;
+  // Use Set to find unique kecamatan and desa/kelurahan strings
+  const totalKecamatan = new Set(apiData.map(item => item.kecamatan).filter(Boolean)).size;
+  const totalDesa = new Set(apiData.map(item => item.desa_kelurahan).filter(Boolean)).size;
+  const totalYayasan = apiData.filter(item => item.jenis_mitra?.toLowerCase() === 'yayasan').length;
 
   const types = [
     {
       id: 1,
-      icon: "flaticon-home", // adjust icon classes to your template
-      title: "Jumlah SPPG",
-      count: counts.totalSppg ?? 0,
+      icon: "flaticon-home", 
+      title: "Unit SPPG",
+      count: totalSppg,
     },
-    // tambahkan item lain nanti kalau perlu
+    {
+      id: 2,
+      icon: "flaticon-map", 
+      title: "Kecamatan Terjangkau",
+      count: totalKecamatan,
+    },
+    {
+      id: 3,
+      icon: "flaticon-map-1", 
+      title: "Desa Terjangkau",
+      count: totalDesa,
+    },
+    {
+      id: 4,
+      icon: "flaticon-building", 
+      title: "Dapur Yayasan",
+      count: totalYayasan,
+    }
   ];
 
 
