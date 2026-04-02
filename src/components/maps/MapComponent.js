@@ -47,7 +47,7 @@ export default function MapComponent({ data }) {
   };
 
   return (
-    <div style={{ height: "500px", width: "100%", borderRadius: "12px", overflow: "hidden" }}>
+    <div style={{ height: "500px", width: "100%", borderRadius: "12px", overflow: "hidden", position: "relative", zIndex: 0 }}>
       <MapContainer center={center} zoom={10} style={{ height: "100%", width: "100%" }}>
         <TileLayer
           attribution='&copy; OpenStreetMap contributors'

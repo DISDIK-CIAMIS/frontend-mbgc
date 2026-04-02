@@ -16,6 +16,7 @@ import Blog from "@/components/common/Blog";
 import Link from "next/link";
 import PopulerProperty from "@/components/home/home-v1/PopulerProperty";
 import DataUmum from "@/components/home/home-v1/DataUmum";
+import { getHomeStats } from "@/services/home_stats";
 
 export const metadata = {
   title: "Beranda || MBGC - Satgas Percepatan MBG Kabupaten Ciamis",
@@ -25,55 +26,23 @@ const Home_V1 = async () => {
   let apiData = [];
 
   try {
-    const res = await fetch(`${process.env.BACKEND_URL}/api/sppg`, {
-      headers: {
-        "X-API-KEY": process.env.LARAVEL_API_KEY,
-        "Accept": "application/json",
-      },
-      cache: "no-store",
-    });
-    
-    if (res.ok) {
-      const json = await res.json();
-      apiData = json.data || [];
-    } else {
-      console.error("SPPG API error:", res.status, await res.text());
-    }
+    apiData = await getHomeStats();
   } catch (error) {
-    console.error("Failed to fetch SPPG data:", error);
+    console.error("Failed to fetch Home Stats data:", error);
   }
 
-  const totalSppg = apiData.length;
-  // Use Set to find unique kecamatan and desa/kelurahan strings
-  const totalKecamatan = new Set(apiData.map(item => item.kecamatan).filter(Boolean)).size;
-  const totalDesa = new Set(apiData.map(item => item.desa_kelurahan).filter(Boolean)).size;
-  const totalYayasan = apiData.filter(item => item.jenis_mitra?.toLowerCase() === 'yayasan').length;
+  const stats = {
+    totalSppg: apiData.length,
+    totalKecamatan: new Set(apiData.map(i => i.kecamatan).filter(Boolean)).size,
+    totalDesa: new Set(apiData.map(i => i.desa_kelurahan).filter(Boolean)).size,
+    totalYayasan: apiData.filter(i => i.jenis_mitra?.toLowerCase() === 'yayasan').length,
+  };
 
   const types = [
-    {
-      id: 1,
-      icon: "flaticon-home", 
-      title: "Unit SPPG",
-      count: totalSppg,
-    },
-    {
-      id: 2,
-      icon: "flaticon-map", 
-      title: "Kecamatan Terjangkau",
-      count: totalKecamatan,
-    },
-    {
-      id: 3,
-      icon: "flaticon-map-1", 
-      title: "Desa Terjangkau",
-      count: totalDesa,
-    },
-    {
-      id: 4,
-      icon: "flaticon-building", 
-      title: "Dapur Yayasan",
-      count: totalYayasan,
-    }
+    { id: 1, icon: "flaticon-home", title: "Unit SPPG", count: stats.totalSppg },
+    { id: 2, icon: "flaticon-map", title: "Kecamatan", count: stats.totalKecamatan },
+    { id: 3, icon: "flaticon-home-2", title: "Desa", count: stats.totalDesa },
+    { id: 4, icon: "flaticon-home-3", title: "Dapur Yayasan", count: stats.totalYayasan },
   ];
 
 
@@ -113,8 +82,8 @@ const Home_V1 = async () => {
       </section>
       {/* End Home Banner Style V1 */}
 
-      {/* Explore Apartment */}
-      <section id="explore-property" className="pb90 pb30-md">
+      {/* Statistik */}
+      <section id="statistik" className="pb30 pb30-md">
         <div className="container">
           <div className="row  justify-content-between align-items-center">
             <div className="col-auto">

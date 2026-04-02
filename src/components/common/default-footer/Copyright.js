@@ -6,35 +6,33 @@ const getCurrentYear = () => {
 
 const Footer = () => {
   const footerMenuItems = [
-    {
-      label: "Privacy",
-      link: "#",
-    },
-    {
-      label: "Terms",
-      link: "#",
-    },
-    {
-      label: "Sitemap",
-      link: "#",
-    },
+    // {
+    //   label: "Privacy",
+    //   link: "#",
+    // },
+    // {
+    //   label: "Terms",
+    //   link: "#",
+    // },
+    // {
+    //   label: "Sitemap",
+    //   link: "#",
+    // },
   ];
 
   return (
     <div className="container white-bdrt1 py-4">
       <div className="row">
-        <div className="col-sm-6">
+        <div className="col-sm-12">
           <div className="text-center text-lg-start">
             <p className="copyright-text text-gray ff-heading">
-              © Tim Digital Dinas Pendidikan Kabupaten Ciamis {getCurrentYear()}{" "}
-              {" "}
-              - All rights reserved
+              © Pemerintah Kabupaten Ciamis. Dikelola oleh Satgas Percepatan MBG. {getCurrentYear()}
             </p>
           </div>
         </div>
         {/* End .col-sm-6 */}
 
-        <div className="col-sm-6">
+        {/* <div className="col-sm-6">
           <div className="text-center text-lg-end">
             <p className="footer-menu ff-heading text-gray">
               {footerMenuItems.map((item, index) => (
@@ -47,7 +45,7 @@ const Footer = () => {
               ))}
             </p>
           </div>
-        </div>
+        </div> */}
         {/* End .col-sm-6 */}
       </div>
     </div>

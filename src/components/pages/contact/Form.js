@@ -33,6 +33,19 @@ const Form = () => {
         {/* End .col-lg-12 */}
 
         <div className="col-md-12">
+          <div className="mb20">
+            <label className="heading-color ff-heading fw600 mb10">No. HP</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Isi nomor hp Anda"
+              required
+            />
+          </div>
+        </div>
+        {/* End .col-lg-12 */}
+
+        <div className="col-md-12">
           <div className="mb10">
             <label className="heading-color ff-heading fw600 mb10">
               Kolom Pengaduan

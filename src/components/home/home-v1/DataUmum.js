@@ -35,9 +35,9 @@ const DataUmum = ({ types }) => {
                 e.preventDefault();
               }}
             >
-              <div className="iconbox-style1">
+              <div className="iconbox-style4 d-flex flex-column align-items-center">
                 <span className={`icon ${type.icon}`} />
-                <div className="iconbox-content">
+                <div className="iconbox-content d-flex flex-column align-items-center">
                   <h6 className="title">{type.title}</h6>
                   <p className="text mb-0 lead">{type.count}</p>
                 </div>

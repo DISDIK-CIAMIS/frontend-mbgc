@@ -68,12 +68,22 @@ const TopStateBlock = () => {
     <>
       {statisticsData.map((data, index) => (
         <div key={index} className="col-sm-6 col-xxl-3">
-          <div className="d-flex justify-content-between statistics_funfact">
+          <div className="d-flex justify-content-between align-items-center statistics_funfact">
             <div className="details">
               <div className="text fz25">{data.text}</div>
               <div className="title">{data.title}</div>
             </div>
-            <div className="icon text-center">
+            {/* Added style to prevent stretching and fix dimensions */}
+            <div 
+              className="icon d-flex align-items-center justify-content-center" 
+              style={{ 
+                width: "60px", 
+                height: "60px", 
+                borderRadius: "50%", 
+                flexShrink: 0, // Prevents the circle from squishing
+                marginLeft: "15px" 
+              }}
+            >
               <i className={data.icon} />
             </div>
           </div>

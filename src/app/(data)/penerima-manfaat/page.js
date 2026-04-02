@@ -4,6 +4,7 @@ import Footer from "@/components/property/dashboard/Footer";
 import data from "@/data/penerima-manfaat.json";
 import PenerimaManfaatBlock from "@/components/data/daftar-sppg/PenerimaManfaatBlock";
 import ClientOnlyTable from "@/components/tables/ClientOnlyTable";
+import DynamicChartWrapper from "@/components/charts/DynamicChartWrapper";
 
 export const metadata = {
   title: "Penerima Manfaat || MBGC - Satgas Percepatan MBG Kabupaten Ciamis",
@@ -30,6 +31,12 @@ export default async function DashboardHomePage() {
 
               <div className="row">
                 <PenerimaManfaatBlock />
+              </div>
+
+              <div className="row mb30">
+                <div className="col-lg-12">
+                  <DynamicChartWrapper componentPath="ManfaatChart" data={data} />
+                </div>
               </div>
 
               <div className="row">
