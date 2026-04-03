@@ -23,9 +23,11 @@ export default function PenerimaManfaatTable({ data }) {
         className: "details-control text-center",
       },
       { title: "Kecamatan", data: "kecamatan" },
-      { title: "Jumlah Desa", data: "desaCount" },
-      { title: "Jumlah Peserta Didik", data: "totalPesertaDidik" },
       { title: "Jumlah Sekolah", data: "totalSekolah" },
+      { title: "Jumlah Peserta Didik", data: "totalPesertaDidik" },
+      { title: "Jumlah Balita", data: "balita" },
+      { title: "Jumlah Bumil", data: "bumil" },
+      { title: "Jumlah Busui", data: "busui" },
     ],
     []
   );
@@ -64,15 +66,21 @@ export default function PenerimaManfaatTable({ data }) {
         const nestedData = (rowData?.desa ?? []).map((desa) => [
           null,
           desa.desa,
-          desa.totalPesertaDidik,
           desa.totalSekolah,
+          desa.totalPesertaDidik,
+          0,
+          0,
+          0,
         ]);
 
         const nestedColumns = [
           { title: "" },
-          { title: "Nama Desa" },
-          { title: "Jumlah Peserta Didik" },
+          { title: "Desa / Kelurahan" },
           { title: "Jumlah Sekolah" },
+          { title: "Jumlah Peserta Didik" },
+          { title: "Jumlah Balita" },
+          { title: "Jumlah Bumil" },
+          { title: "Jumlah Busui" },
         ];
 
         // Ensure child table exists in DOM, then initialize
@@ -82,7 +90,7 @@ export default function PenerimaManfaatTable({ data }) {
             data: nestedData,
             columns: nestedColumns,
             paging: false,
-            searching: false,
+            searching: true,
             info: true,
           });
         }, 50);

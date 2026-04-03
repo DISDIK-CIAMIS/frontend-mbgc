@@ -6,7 +6,7 @@ import data from "@/data/daftar-sppg.json";
 import DataSppgBlock from "@/components/data/daftar-sppg/DataSppgBlock";
 import ClientOnlyTable from "@/components/tables/ClientOnlyTable";
 import MapWrapper from "@/components/maps/MapWrapper";
-import { getDataSppg } from "@/services/data_sppg";
+import { getDataSppg } from "@/services/DataSppg";
 
 export const metadata = {
   title: "Daftar SPPG || MBGC - Satgas Percepatan MBG Kabupaten Ciamis",
@@ -27,8 +27,8 @@ export default async function DashboardHomePage() {
               <div className="row pb40">
                 <div className="col-lg-12">
                   <div className="dashboard_title_area">
-                    <h2>Daftar SPPG</h2>
-                    <p className="text">Menampilkan data per Kecamatan hingga tingkat Desa/Kelurahan</p>
+                    <h2>Data Sebaran SPPG</h2>
+                    <p className="text">Menampilkan data sebaran SPPG di Kabupaten Ciamis</p>
                   </div>
                 </div>
               </div>
@@ -36,8 +36,8 @@ export default async function DashboardHomePage() {
               <div className="row mb30">
                 <div className="col-lg-12">
                   <div className="p30 bgc-white bdrs12">
-                    <h4 className="title mb20">Sebaran SPPG Kabupaten Ciamis</h4>
-                    <MapWrapper data={data} />
+                    {/* <h4 className="title mb20">Sebaran SPPG Kabupaten Ciamis</h4> */}
+                    <MapWrapper data={apiData} />
                   </div>
                 </div>
               </div>
@@ -49,7 +49,7 @@ export default async function DashboardHomePage() {
               <div className="row">
                 <div className="col-lg-12">
                   <div className="datatable-wrapper">
-                    <ClientOnlyTable data={data} />
+                    <ClientOnlyTable data={apiData} />
                   </div>
                 </div>
               </div>

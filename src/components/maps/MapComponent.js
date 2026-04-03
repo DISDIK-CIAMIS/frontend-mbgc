@@ -30,7 +30,7 @@ export default function MapComponent({ data }) {
   const onEachKecamatan = (feature, layer) => {
     if (feature.properties && feature.properties.WADMKC) {
       // Munculkan popup nama kecamatan saat diklik
-      layer.bindPopup(`<strong>Kecamatan: ${feature.properties.WADMKC}</strong>`);
+      layer.bindPopup(`<strong>Kecamatan ${feature.properties.WADMKC}</strong>`);
       
       // Efek hover (optional)
       layer.on({
@@ -60,6 +60,83 @@ export default function MapComponent({ data }) {
           style={geojsonStyle} 
           onEachFeature={onEachKecamatan}
         />
+
+        {data.sppg.map((item) => (
+        <Marker key={item.id} position={[item.latitude, item.longitude]}>
+          <Popup maxWidth={280} minWidth={240} className="custom-tailwind-popup">
+            <div className="p-2" style={{ fontFamily: 'Inter, system-ui, sans-serif' }}>
+              {/* Category + Status Row */}
+              <div className="d-flex align-items-center gap-2 mb-2">
+                <span style={{ 
+                  fontSize: '10px', 
+                  fontWeight: '700', 
+                  letterSpacing: '0.05em', 
+                  textTransform: 'uppercase',
+                  color: '#64748b' 
+                }}>
+                  Unit SPPG
+                </span>
+                <span style={{
+                  fontSize: '11px',
+                  padding: '2px 8px',
+                  borderRadius: '9999px',
+                  fontWeight: '600',
+                  backgroundColor: item.status === 'Aktif' ? '#dcfce7' : '#f1f5f9',
+                  color: item.status === 'Aktif' ? '#166534' : '#475569'
+                }}>
+                  {item.status}
+                </span>
+              </div>
+
+              {/* Title */}
+              <h6 style={{ 
+                fontWeight: '700', 
+                color: '#1e293b', 
+                fontSize: '16px', 
+                marginBottom: '4px',
+                lineHeight: '1.2'
+              }}>
+                {item.nama_sppg}
+              </h6>
+
+              {/* Address Section */}
+              <div className="d-flex align-items-start gap-2 mt-3">
+                <p style={{ 
+                  fontSize: '13px', 
+                  color: '#475569', 
+                  margin: 0, 
+                  lineHeight: '1.5' 
+                }}>
+                  {item.alamat}
+                </p>
+              </div>
+
+              {/* Footer Meta */}
+              <div style={{ 
+                marginTop: '16px', 
+                paddingTop: '12px', 
+                borderTop: '1px solid #f1f5f9',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center'
+              }}>
+                <span style={{ fontSize: '12px', color: '#94a3b8' }}>
+                  Kode SPPG: {item.kode_sppg}
+                </span>
+                <a href="#" style={{ 
+                  fontSize: '13px', 
+                  fontWeight: '600', 
+                  color: '#2563eb', 
+                  textDecoration: 'none' 
+                }}>
+                  Detail →
+                </a>
+              </div>
+            </div>
+          </Popup>
+        </Marker>
+      ))}
+
       </MapContainer>
     </div>
   );

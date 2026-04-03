@@ -1,22 +1,13 @@
-import Explore from "@/components/common/Explore";
 import Footer from "@/components/common/default-footer";
 import MobileMenu from "@/components/common/mobile-menu";
-import About from "@/components/home/home-v1/About";
-import ApartmentType from "@/components/home/home-v1/ApartmentType";
 import CallToActions from "@/components/common/CallToActions";
-import FeaturedListings from "@/components/home/home-v1/FeatuerdListings";
 import Header from "@/components/home/home-v1/Header";
 import Partner from "@/components/common/Partner";
-import PopularListings from "@/components/home/home-v1/PopularListings";
-import PropertiesByCities from "@/components/home/home-v1/PropertiesByCities";
-import Testimonial from "@/components/home/home-v1/Testimonial";
 import Hero from "@/components/home/home-v1/hero";
 import Image from "next/image";
 import Blog from "@/components/common/Blog";
-import Link from "next/link";
-import PopulerProperty from "@/components/home/home-v1/PopulerProperty";
 import DataUmum from "@/components/home/home-v1/DataUmum";
-import { getHomeStats } from "@/services/home_stats";
+import { getHomeStats } from "@/services/HomeStats";
 
 export const metadata = {
   title: "Beranda || MBGC - Satgas Percepatan MBG Kabupaten Ciamis",
@@ -38,13 +29,25 @@ const Home_V1 = async () => {
   };
 
   const types = [
-    { id: 1, icon: "flaticon-home", title: "Unit SPPG", count: stats.totalSppg },
-    { id: 2, icon: "flaticon-map", title: "Satuan Pendidikan", count: stats.totalSatdik },
+    { id: 1, icon: "fa-solid fa-home", title: "Unit SPPG", count: stats.totalSppg },
+    { id: 2, icon: "fa-solid fa-school", title: "Satuan Pendidikan", count: stats.totalSatdik },
     { 
       id: 3, 
-      icon: "flaticon-user",
+      icon: "fas fa-user-graduate",
       title: "Total Siswa", 
       count: stats.totalSiswa.toLocaleString('id-ID')
+    },
+    { 
+      id: 4, 
+      icon: "fa-solid fa-person-pregnant",
+      title: "Kelompok B3", 
+      count: 5430
+    },
+    { 
+      id: 5, 
+      icon: "fa-solid fa-ruler-vertical",
+      title: "Anak Stunting", 
+      count: 5430
     },
   ];
 

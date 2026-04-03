@@ -18,6 +18,7 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
 @import url(../css/flaticon.css);
 @import url(../css/menu.css);
 @import url(../css/ud-custom-spacing.css);
+@import url(../css/dataTables.dataTables.css);
 
 /* == Table Of Content  == */
 /* Variables */
@@ -10598,3 +10599,60 @@ td.details-control i {
   background-color: #fff6e6 !important;
   cursor: pointer;
 }
+
+/* Target the DataTables library classes globally */
+table.dataTable,
+table.dataTable th,
+table.dataTable td,
+.dataTables_wrapper,
+.dataTables_wrapper .dataTables_filter input,
+.dataTables_wrapper .dataTables_length select,
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_paginate {
+    font-family: 'Lexend Deca', sans-serif !important;
+}
+
+.pill-title {
+    /* KUNCI: Membuat lebar mengikuti teks */
+    display: inline-flex; 
+    align-items: center;
+    justify-content: center;
+
+    /* Styling Visual */
+    background: #ffffff; /* Putih bersih */
+    color: #000000; /* Warna identitas (Ungu Satgas) */
+    padding: 10px 28px; /* Padding proporsional */
+    border-radius: 50px; /* Bentuk Pill sempurna */
+    font-weight: 700;
+    font-size: 1.5rem;
+    
+    /* Efek Border & Shadow Lembut */
+    border: 1px solid rgba(78, 47, 137, 0.15);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    
+    /* Animasi Halus */
+    transition: all 0.3s ease;
+    cursor: default;
+    letter-spacing: 0.3px;
+  }
+
+  .pill-title:hover {
+    background: #fcfaff;
+    border-color: #000000;
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Styling Ikon di dalam Pill */
+  .pill-title i {
+    font-size: 1.1rem;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+  }
+
+  /* Responsif untuk layar HP */
+  @media (max-width: 576px) {
+    .pill-title {
+      font-size: 0.85rem;
+      padding: 8px 20px;
+    }
+  }

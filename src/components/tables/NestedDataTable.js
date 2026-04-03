@@ -22,12 +22,27 @@ export default function NestedDataTable({ data }) {
         orderable: false,
         className: "details-control text-center",
       },
-      { title: "No", data: "No" },
-      { title: "Nama SPPG", data: "SPPG" },
-      { title: "Alamat", data: "Alamat SPPG" },
-      { title: "Tgl Mulai Operasional", data: "Tanggal Mulai Operasional" },
-      { title: "Jumlah Penerima Manfaat (orang)", data: "Jumlah Penerima Manfaat (orang)" },
-      { title: "Jumlah Relawan (orang)", data: "Jumlah Relawan (orang)" },
+      { title: "No", data: "id" },
+      { title: "Nama SPPG", data: "nama_sppg" },
+      { 
+        title: "Status Operasional",
+        data: "status" ,
+        render: (data) => {
+          // Define your color mapping based on the status text
+          const statusMap = {
+            'Aktif': 'bg-success',        // Green
+            'Non-Aktif': 'bg-danger',     // Red
+            'Dalam Persiapan': 'bg-warning text-dark' // Yellow/Orange
+          };
+
+          // Fallback to 'bg-secondary' if the status doesn't match
+          const badgeClass = statusMap[data] || 'bg-secondary';
+          
+          return `<span class="badge ${badgeClass}">${data}</span>`;
+        }
+      },
+      { title: "Status SLHS", data: "status_slhs", defaultContent: "-" },
+      { title: "Jumlah Pegawai", data: "jumlah_pegawai", defaultContent: "-" },
     ],
     []
   );
@@ -55,23 +70,23 @@ export default function NestedDataTable({ data }) {
         const rowData = row.data();
         
         const detailsHtml = `
-          <div class="px-4 py-3 bg-light rounded" style="border-left: 4px solid #007bff; margin: 0.5rem 0;">
+          <div class="px-4 py-3 bg-light rounded" style="border-left: 4px solid #000000ff; margin: 0.5rem 0;">
             <div class="row">
                 <div class="col-md-6 mb-2">
                     <strong class="d-block text-muted" style="font-size: 0.85rem;">Kode SPPG</strong>
                     <span class="badge bg-primary fs-6 mt-1">${rowData?.kode_sppg || '-'}</span>
                 </div>
                 <div class="col-md-6 mb-2">
-                    <strong class="d-block text-muted" style="font-size: 0.85rem;">Nama Kepala SPPG</strong>
-                    <span class="d-block fw-semibold mt-1">${rowData?.Nama_Kepala_SPPG || '-'}</span>
+                    <strong class="d-block text-muted" style="font-size: 0.85rem;">Alamat</strong>
+                    <span class="d-block fw-semibold mt-1">${rowData?.alamat || '-'}</span>
                 </div>
                 <div class="col-md-6 mb-2">
-                    <strong class="d-block text-muted" style="font-size: 0.85rem;">Jabatan</strong>
-                    <span class="d-block mt-1">${rowData?.Jabatan || '-'}</span>
+                    <strong class="d-block text-muted" style="font-size: 0.85rem;">Kecamatan</strong>
+                    <span class="d-block mt-1">${rowData?.kecamatan || '-'}</span>
                 </div>
                 <div class="col-md-6 mb-2">
-                    <strong class="d-block text-muted" style="font-size: 0.85rem;">Yayasan Pengampu</strong>
-                    <span class="d-block mt-1">${rowData?.['Nama Yayasan'] || '-'}</span>
+                    <strong class="d-block text-muted" style="font-size: 0.85rem;">Desa</strong>
+                    <span class="d-block mt-1">${rowData?.desa_kelurahan || '-'}</span>
                 </div>
             </div>
           </div>
@@ -96,7 +111,7 @@ export default function NestedDataTable({ data }) {
   return (
     <DataTable
       ref={tableRef}
-      data={data}
+      data={data?.sppg || []}
       columns={columns}
       options={{
         paging: true,

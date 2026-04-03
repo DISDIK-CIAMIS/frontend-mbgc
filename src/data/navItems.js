@@ -120,15 +120,12 @@ export const profilItems = [
 ];
 
 export const agendaItems = [
-  { href: "/agenda", label: "Agenda" },
+  // { href: "/agenda", label: "Agenda" },
 ];
 
 export const dataItems = [
   { href: "/daftar-sppg", label: "Daftar SPPG" },
   { href: "/penerima-manfaat", label: "Penerima Manfaat" },
-  { href: "/sekolah-peserta-didik", label: "Sekolah & Peserta Didik" },
-  { href: "/bumil-anak-stunting", label: "Ibu Hamil & Anak Kurang Gizi" },
-  { href: "/penduduk-miskin", label: "Penduduk Miskin" },
 ];
 
 export const pengaduanItems = [
