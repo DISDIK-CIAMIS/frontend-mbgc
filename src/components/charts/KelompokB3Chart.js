@@ -45,10 +45,10 @@ export default function KelompokB3Chart({ data }) {
 
   // Mapping data (Menggunakan data props jika ada, jika tidak pakai dummy)
   const chartData = (data && data.length > 0) ? data.map(item => ({
-    name: item.kecamatan,
-    balita: item.balita || 0,
-    bumil: item.bumil || 0,
-    busui: item.busui || 0,
+    name: item.namaKecamatan,
+    balita: item.totalBalitaKec || 0,
+    bumil: item.totalBumilKec || 0,
+    busui: item.totalBusuiKec || 0,
   })) : dummyCiamisData;
 
   return (

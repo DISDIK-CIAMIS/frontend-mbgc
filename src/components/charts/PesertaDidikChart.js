@@ -13,8 +13,8 @@ import {
 export default function PesertaDidikChart({ data }) {
   // Map the nested JSON to a flat format for Recharts
   const chartData = data.map(item => ({
-    name: item.kecamatan,
-    total: item.totalPesertaDidik
+    name: item.namaKecamatan,
+    total: item.totalSiswaKec
   }));
 
   return (

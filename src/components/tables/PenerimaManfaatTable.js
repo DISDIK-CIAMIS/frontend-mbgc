@@ -22,12 +22,12 @@ export default function PenerimaManfaatTable({ data }) {
         orderable: false,
         className: "details-control text-center",
       },
-      { title: "Kecamatan", data: "kecamatan" },
-      { title: "Jumlah Sekolah", data: "totalSekolah" },
-      { title: "Jumlah Peserta Didik", data: "totalPesertaDidik" },
-      { title: "Jumlah Balita", data: "balita" },
-      { title: "Jumlah Bumil", data: "bumil" },
-      { title: "Jumlah Busui", data: "busui" },
+      { title: "Kecamatan", data: "namaKecamatan" },
+      { title: "Jumlah Sekolah", data: "totalSekolahKec" },
+      { title: "Jumlah Peserta Didik", data: "totalSiswaKec" },
+      { title: "Jumlah Balita", data: "totalBalitaKec" },
+      { title: "Jumlah Bumil", data: "totalBumilKec" },
+      { title: "Jumlah Busui", data: "totalBusuiKec" },
     ],
     []
   );
@@ -63,14 +63,14 @@ export default function PenerimaManfaatTable({ data }) {
         target.innerHTML = `<i class="fa-solid fa-square-minus"></i>`;
 
         // Prepare nested data
-        const nestedData = (rowData?.desa ?? []).map((desa) => [
+        const nestedData = (rowData?.daftarDesa ?? []).map((desa) => [
           null,
-          desa.desa,
-          desa.totalSekolah,
-          desa.totalPesertaDidik,
-          0,
-          0,
-          0,
+          desa.namaDesa,
+          desa.jumlahSekolah,
+          desa.jumlahSiswa,
+          desa.jumlahBalita,
+          desa.jumlahBumil,
+          desa.jumlahBusui,
         ]);
 
         const nestedColumns = [

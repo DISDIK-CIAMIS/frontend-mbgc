@@ -29,7 +29,6 @@ export async function getHomeStats() {
     ]);
 
     const satdikData = satdikJson.data || [];
-    console.log("Satdik Data Sample:", satdikData[0]); // Check the first item
 
     // Calculate Total Siswa here
     const totalSiswa = satdikData.reduce((acc, curr) => {
