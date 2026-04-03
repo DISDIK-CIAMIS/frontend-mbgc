@@ -3,15 +3,18 @@ import DefaultHeader from "@/components/common/DefaultHeader";
 import MobileMenu from "@/components/common/mobile-menu";
 import Footer from "@/components/property/dashboard/Footer";
 import data from "@/data/daftar-sppg.json";
-import TopStateBlock from "@/components/data/daftar-sppg/TopStateBlock";
+import DataSppgBlock from "@/components/data/daftar-sppg/DataSppgBlock";
 import ClientOnlyTable from "@/components/tables/ClientOnlyTable";
 import MapWrapper from "@/components/maps/MapWrapper";
+import { getDataSppg } from "@/services/data_sppg";
 
 export const metadata = {
   title: "Daftar SPPG || MBGC - Satgas Percepatan MBG Kabupaten Ciamis",
 };
 
 export default async function DashboardHomePage() {
+
+  const apiData = await getDataSppg(); // Fetched correctly here
 
   return (
     <>
@@ -40,7 +43,7 @@ export default async function DashboardHomePage() {
               </div>
 
               <div className="row">
-                <TopStateBlock />
+                <DataSppgBlock data={apiData}/>
               </div>
 
               <div className="row">

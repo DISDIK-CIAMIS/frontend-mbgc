@@ -32,17 +32,20 @@ const Home_V1 = async () => {
   }
 
   const stats = {
-    totalSppg: apiData.length,
-    totalKecamatan: new Set(apiData.map(i => i.kecamatan).filter(Boolean)).size,
-    totalDesa: new Set(apiData.map(i => i.desa_kelurahan).filter(Boolean)).size,
-    totalYayasan: apiData.filter(i => i.jenis_mitra?.toLowerCase() === 'yayasan').length,
+    totalSppg: apiData.stats.length,
+    totalSatdik: apiData.satdik.length,
+    totalSiswa: apiData.totalSiswa,
   };
 
   const types = [
     { id: 1, icon: "flaticon-home", title: "Unit SPPG", count: stats.totalSppg },
-    { id: 2, icon: "flaticon-map", title: "Kecamatan", count: stats.totalKecamatan },
-    { id: 3, icon: "flaticon-home-2", title: "Desa", count: stats.totalDesa },
-    { id: 4, icon: "flaticon-home-3", title: "Dapur Yayasan", count: stats.totalYayasan },
+    { id: 2, icon: "flaticon-map", title: "Satuan Pendidikan", count: stats.totalSatdik },
+    { 
+      id: 3, 
+      icon: "flaticon-user",
+      title: "Total Siswa", 
+      count: stats.totalSiswa.toLocaleString('id-ID')
+    },
   ];
 
 
