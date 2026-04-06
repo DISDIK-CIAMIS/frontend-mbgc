@@ -9,7 +9,7 @@ import MapWrapper from "@/components/maps/MapWrapper";
 import { getDataSppg } from "@/services/DataSppg";
 
 export const metadata = {
-  title: "Daftar SPPG || MBGC - Satgas Percepatan MBG Kabupaten Ciamis",
+  title: "Data Sebaran SPPG || MBGC - Satgas Percepatan MBG Kabupaten Ciamis",
 };
 
 export default async function DashboardHomePage() {

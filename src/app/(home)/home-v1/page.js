@@ -26,11 +26,23 @@ const Home_V1 = async () => {
     totalSppg: apiData.stats.length,
     totalSatdik: apiData.satdik.length,
     totalSiswa: apiData.totalSiswa,
+    totalB3: apiData.totalB3,
+    totalAnakStunting: apiData.totalAnakStunting
   };
 
   const types = [
-    { id: 1, icon: "fa-solid fa-home", title: "Unit SPPG", count: stats.totalSppg },
-    { id: 2, icon: "fa-solid fa-school", title: "Satuan Pendidikan", count: stats.totalSatdik },
+    { 
+      id: 1, 
+      icon: "fa-solid fa-home", 
+      title: "Unit SPPG", 
+      count: stats.totalSppg 
+    },
+    { 
+      id: 2, 
+      icon: "fa-solid fa-school", 
+      title: "Satuan Pendidikan", 
+      count: stats.totalSatdik.toLocaleString('id-ID') 
+    },
     { 
       id: 3, 
       icon: "fas fa-user-graduate",
@@ -41,13 +53,13 @@ const Home_V1 = async () => {
       id: 4, 
       icon: "fa-solid fa-person-pregnant",
       title: "Kelompok B3", 
-      count: 5430
+      count: stats.totalB3.toLocaleString('id-ID')
     },
     { 
       id: 5, 
       icon: "fa-solid fa-ruler-vertical",
       title: "Anak Stunting", 
-      count: 5430
+      count: stats.totalAnakStunting.toLocaleString('id-ID')
     },
   ];
 
@@ -155,7 +167,7 @@ const Home_V1 = async () => {
           </div>
         </div>
       </section>
-      {/* End Explore Apartment */}
+      {/* End Data Statistik */}
 
       {/* Explore Blog */}
       <section className="pb90 pb20-md">

@@ -120,11 +120,11 @@ export const profilItems = [
 ];
 
 export const agendaItems = [
-  // { href: "/agenda", label: "Agenda" },
+  { href: "/agenda", label: "Agenda" },
 ];
 
 export const dataItems = [
-  { href: "/daftar-sppg", label: "Daftar SPPG" },
+  { href: "/sebaran-sppg", label: "Sebaran SPPG" },
   { href: "/penerima-manfaat", label: "Penerima Manfaat" },
 ];
 

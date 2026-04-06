@@ -17,8 +17,6 @@ export default async function DashboardHomePage() {
 
   const ApiData = await getPenerimaManfaat();
 
-  console.log(ApiData.summaryWilayah);
-
   const dataPendidikan = [
     { 
       title: 'PAUD Sederajat',
