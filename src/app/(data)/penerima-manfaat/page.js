@@ -13,36 +13,36 @@ export const metadata = {
   title: "Penerima Manfaat || MBGC - Satgas Percepatan MBG Kabupaten Ciamis",
 };
 
-export default async function DashboardHomePage() {
+export default async function PenerimaManfaatPage() {
 
   const ApiData = await getPenerimaManfaat();
 
   const dataPendidikan = [
     { 
       title: 'PAUD Sederajat',
-      sekolah: ApiData.summarySiswa.jumlahSekolahPAUD.toLocaleString('id-ID'),
-      siswa: ApiData.summarySiswa.jumlahSiswaPAUD.toLocaleString('id-ID'),
+      sekolah: ApiData?.summarySiswa?.jumlahSekolahPAUD?.toLocaleString('id-ID') ?? "-",
+      siswa: ApiData?.summarySiswa?.jumlahSiswaPAUD?.toLocaleString('id-ID') ?? "-",
       icon: 'fa-solid fa-child',
       variant: 'paud' 
     },
     { 
       title: 'SD Sederajat', 
-      sekolah: ApiData.summarySiswa.jumlahSekolahSD.toLocaleString('id-ID'), 
-      siswa: ApiData.summarySiswa.jumlahSiswaSD.toLocaleString('id-ID'), 
+      sekolah: ApiData?.summarySiswa?.jumlahSekolahSD?.toLocaleString('id-ID') ?? "-", 
+      siswa: ApiData?.summarySiswa?.jumlahSiswaSD?.toLocaleString('id-ID') ?? "-", 
       icon: 'fa-solid fa-book-open', 
       variant: 'sd' 
     },
     { 
       title: 'SMP Sederajat', 
-      sekolah: ApiData.summarySiswa.jumlahSekolahSMP.toLocaleString('id-ID'), 
-      siswa: ApiData.summarySiswa.jumlahSiswaSMP.toLocaleString('id-ID'), 
+      sekolah: ApiData?.summarySiswa?.jumlahSekolahSMP?.toLocaleString('id-ID') ?? "-", 
+      siswa: ApiData?.summarySiswa?.jumlahSiswaSMP?.toLocaleString('id-ID') ?? "-", 
       icon: 'fa-solid fa-graduation-cap', 
       variant: 'smp' 
     },
     { 
       title: 'SMA Sederajat', 
-      sekolah: ApiData.summarySiswa.jumlahSekolahSMA.toLocaleString('id-ID'), 
-      siswa: ApiData.summarySiswa.jumlahSiswaSMA.toLocaleString('id-ID'), 
+      sekolah: ApiData?.summarySiswa?.jumlahSekolahSMA?.toLocaleString('id-ID') ?? "-", 
+      siswa: ApiData?.summarySiswa?.jumlahSiswaSMA?.toLocaleString('id-ID') ?? "-", 
       icon: 'fa-solid fa-school', 
       variant: 'sma'
     },
@@ -51,25 +51,25 @@ export default async function DashboardHomePage() {
   const dataB3 = [
     { 
       title: 'Balita', 
-      jumlah: ApiData.summaryBumilstun.totalBalita.toLocaleString('id-ID'), 
+      jumlah: ApiData?.summaryBumilstun?.totalBalita?.toLocaleString('id-ID') ?? "-", 
       icon: 'fa-solid fa-baby', 
       variant: 'balita' 
     },
     { 
       title: 'Ibu Hamil', 
-      jumlah: ApiData.summaryBumilstun.totalBumil.toLocaleString('id-ID'), 
+      jumlah: ApiData?.summaryBumilstun?.totalBumil?.toLocaleString('id-ID') ?? "-", 
       icon: 'fa-solid fa-person-pregnant', 
       variant: 'bumil' 
     },
     { 
       title: 'Ibu Menyusui', 
-      jumlah: ApiData.summaryBumilstun.totalBusui.toLocaleString('id-ID'), 
+      jumlah: ApiData?.summaryBumilstun?.totalBusui?.toLocaleString('id-ID') ?? "-", 
       icon: 'fa-solid fa-baby-carriage', 
       variant: 'busui' 
     },
     { 
       title: 'Anak Stunting', 
-      jumlah: ApiData.summaryBumilstun.totalAnakStunting.toLocaleString('id-ID'), 
+      jumlah: ApiData?.summaryBumilstun?.totalAnakStunting?.toLocaleString('id-ID') ?? "-", 
       icon: 'fa-solid fa-ruler-vertical', 
       variant: 'stunting' 
     },
@@ -133,20 +133,20 @@ export default async function DashboardHomePage() {
 
               <div className="row mb30">
                 <div className="col-lg-12">
-                  <DynamicChartWrapper componentPath="PesertaDidikChart" data={ApiData.summaryWilayah} />
+                  <DynamicChartWrapper componentPath="PesertaDidikChart" data={ApiData?.summaryWilayah} />
                 </div>
               </div>
 
               <div className="row mb30">
                 <div className="col-lg-12">
-                  <DynamicChartWrapper componentPath="KelompokB3Chart" data={ApiData.summaryWilayah} />
+                  <DynamicChartWrapper componentPath="KelompokB3Chart" data={ApiData?.summaryWilayah} />
                 </div>
               </div>
 
               <div className="row">
                 <div className="col-lg-12">
                     <div className="datatable-wrapper">
-                        <ClientOnlyTable data={ApiData.summaryWilayah} component="PenerimaManfaatTable" />
+                        <ClientOnlyTable data={ApiData?.summaryWilayah} component="PenerimaManfaatTable" />
                     </div>
                 </div>
               </div>

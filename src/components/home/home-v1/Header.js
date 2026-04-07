@@ -63,7 +63,7 @@ const Header = () => {
               </div>
               {/* End .col-auto */}
 
-              <div className="col-auto">
+              {/* <div className="col-auto">
                 <div className="d-flex align-items-center">
                   <a
                     className="sidemenu-btn filter-btn-right"
@@ -89,7 +89,7 @@ const Header = () => {
                     />
                   </a>
                 </div>
-              </div>
+              </div> */}
               {/* End .col-auto */}
             </div>
             {/* End .row */}

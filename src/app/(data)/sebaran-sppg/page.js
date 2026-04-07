@@ -12,7 +12,7 @@ export const metadata = {
   title: "Data Sebaran SPPG || MBGC - Satgas Percepatan MBG Kabupaten Ciamis",
 };
 
-export default async function DashboardHomePage() {
+export default async function SebaranSppgPage() {
 
   const apiData = await getDataSppg(); // Fetched correctly here
 

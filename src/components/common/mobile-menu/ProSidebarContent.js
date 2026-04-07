@@ -14,7 +14,7 @@ const ProSidebarContent = () => {
   return (
     <Sidebar width="100%" backgroundColor="#fff" className="my-custom-class">
       <Menu>
-        <MenuItem component={<Link href="/" />}> Beranda</MenuItem>
+        <MenuItem className={path == "/" ? "active" : ""} component={<Link href="/" />}> Beranda</MenuItem>
         {mobileMenuItems.map((item, index) => (
           <SubMenu
             key={index}
@@ -60,7 +60,7 @@ const ProSidebarContent = () => {
             )}
           </SubMenu>
         ))}
-        <MenuItem component={<Link href="/pengaduan" />}>Pengaduan</MenuItem>
+        <MenuItem className={path == "/pengaduan" ? "active" : ""} component={<Link href="/pengaduan" />}>Pengaduan</MenuItem>
       </Menu>
     </Sidebar>
   );

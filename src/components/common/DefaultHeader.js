@@ -63,7 +63,7 @@ const DefaultHeader = () => {
               </div>
               {/* End .col-auto */}
 
-              <div className="col-auto">
+              {/* <div className="col-auto">
                 <div className="d-flex align-items-center">
                   <a
                     className="sidemenu-btn filter-btn-right"
@@ -88,7 +88,7 @@ const DefaultHeader = () => {
                     />
                   </a>
                 </div>
-              </div>
+              </div> */}
               {/* End .col-auto */}
             </div>
             {/* End .row */}
